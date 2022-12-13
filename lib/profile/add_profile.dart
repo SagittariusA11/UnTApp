@@ -236,7 +236,7 @@ class _AddProfileScreenState extends State<AddProfileScreen> {
                         'assets/calender.png',
                         cacheHeight: 20,
                       ),
-                      hintText: 'Date Of Birht',
+                      hintText: 'Date Of Birth',
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(8.0),
                       ),

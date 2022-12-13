@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -46,118 +47,119 @@ class _LoginViewState extends State<LoginView> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: DefaultTabController(
-        length: 2,
-        child: Scaffold(
-          body: SingleChildScrollView(
-            child: Container(
-              margin: EdgeInsets.symmetric(horizontal: Get.width * 0.05),
-              child: Column(
-                children: [
-                  SizedBox(
-                    height: Get.height * 0.08,
-                  ),
-                  isSignUp
-                      ? myText(
-                    text: 'Sign Up',
-                    style: TextStyle(
-                      fontSize: 23,
-                      fontWeight: FontWeight.w600,
+    return ScreenUtilInit(
+      builder: (context, child) => SafeArea(
+        child: DefaultTabController(
+          length: 2,
+          child: Scaffold(
+            body: SingleChildScrollView(
+              child: Container(
+                margin: EdgeInsets.symmetric(horizontal: Get.width * 0.05),
+                child: Column(
+                  children: [
+                    SizedBox(
+                      height: Get.height * 0.08,
                     ),
-                  )
-                      : myText(
-                    text: 'Login',
-                    style: GoogleFonts.poppins(
-                      fontSize: 23,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                  SizedBox(
-                    height: Get.height * 0.03,
-                  ),
-                  isSignUp
-                      ? Container(
-                    child: myText(
-                      text:
-                      'Welcome, Please Sign up to see events and classes from your friends.',
-                      style: GoogleFonts.roboto(
-                        letterSpacing: 0,
-                        fontSize: 18,
-                        fontWeight: FontWeight.w400,
+                    isSignUp
+                        ? myText(
+                      text: 'Sign Up',
+                      style: TextStyle(
+                        fontSize: 23,
+                        fontWeight: FontWeight.w600,
                       ),
-                      textAlign: TextAlign.center,
-                    ),
-                  )
-                      : Container(
-                    child: myText(
-                      text:
-                      'Welcome back, Please Sign in and continue your journey with us.',
-                      style: GoogleFonts.roboto(
-                        letterSpacing: 0,
-                        fontSize: 18,
-                        fontWeight: FontWeight.w400,
+                    )
+                        : myText(
+                      text: 'Login',
+                      style: GoogleFonts.poppins(
+                        fontSize: 23,
+                        fontWeight: FontWeight.w600,
                       ),
-                      textAlign: TextAlign.center,
                     ),
-                  ),
-                  SizedBox(
-                    height: Get.height * 0.03,
-                  ),
-                  Container(
-                    width: Get.width * 0.55,
-                    child: TabBar(
-                      labelPadding: EdgeInsets.all(Get.height * 0.01),
-                      unselectedLabelColor: Colors.grey,
-                      labelColor: Colors.black,
-                      indicatorColor: Colors.black,
-                      onTap: (v) {
-                        setState(() {
-                          isSignUp = !isSignUp;
-                        });
-                      },
-                      tabs: [
-                        myText(
-                          text: 'Login',
-                          style: TextStyle(
+                    SizedBox(
+                      height: Get.height * 0.03,
+                    ),
+                    isSignUp
+                        ? Container(
+                      child: Text(
+                        'Welcome, Please Sign up to see events and classes from your friends.',
+                        style: GoogleFonts.roboto(
+                          letterSpacing: 0,
+                          fontSize: 18,
+                          fontWeight: FontWeight.w400,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                    )
+                        : Container(
+                      child: Text(
+                        'Welcome back, Please Sign in and continue your journey with us.',
+                        style: GoogleFonts.roboto(
+                          letterSpacing: 0,
+                          fontSize: 18,
+                          fontWeight: FontWeight.w400,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                    SizedBox(
+                      height: Get.height * 0.03,
+                    ),
+                    Container(
+                      width: Get.width * 0.55,
+                      child: TabBar(
+                        labelPadding: EdgeInsets.all(Get.height * 0.01),
+                        unselectedLabelColor: Colors.grey,
+                        labelColor: Colors.black,
+                        indicatorColor: Colors.black,
+                        onTap: (v) {
+                          setState(() {
+                            isSignUp = !isSignUp;
+                          });
+                        },
+                        tabs: [
+                          myText(
+                            text: 'Login',
+                            style: TextStyle(
+                                fontSize: 22,
+                                fontWeight: FontWeight.w500,
+                                color: AppColors.black),
+                          ),
+                          myText(
+                            text: 'Sign Up',
+                            style: TextStyle(
                               fontSize: 22,
                               fontWeight: FontWeight.w500,
-                              color: AppColors.black),
-                        ),
-                        myText(
-                          text: 'Sign Up',
-                          style: TextStyle(
-                            fontSize: 22,
-                            fontWeight: FontWeight.w500,
-                            color: AppColors.black,
+                              color: AppColors.black,
+                            ),
                           ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(
-                    height: Get.height * 0.04,
-                  ),
-                  Container(
-                    width: Get.width,
-                    height: Get.height * 0.6,
-                    child: Form(
-                      key: formKey,
-                      child: TabBarView(
-                        physics: NeverScrollableScrollPhysics(),
-                        children: [
-                          LoginWidget(),
-                          SignUpWidget(),
                         ],
                       ),
                     ),
-                  ),
-                ],
+                    SizedBox(
+                      height: Get.height * 0.04,
+                    ),
+                    Container(
+                      width: Get.width,
+                      height: Get.height * 0.6,
+                      child: Form(
+                        key: formKey,
+                        child: TabBarView(
+                          physics: NeverScrollableScrollPhysics(),
+                          children: [
+                            LoginWidget(),
+                            SignUpWidget(),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
         ),
       ),
+      designSize: const Size(375.0, 728.0),
     );
   }
 
@@ -449,7 +451,6 @@ class _LoginViewState extends State<LoginView> {
                 )),
           ],
         )
-
     );
   }
 }
