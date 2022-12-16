@@ -1,6 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+
+import '../profile/anonymous_profile_screen.dart';
 
 class chatlist extends StatefulWidget {
   @override
@@ -61,14 +65,20 @@ class _RelatedListState extends State<chatlist> {
       builder: (context, child) => Container(
         height: 477.0, //seen dekhna padega,tobe changed accordingly
         width: 360,
-
         child: SizedBox(
           height: 75.0,
           child: ListView.separated(
             scrollDirection: Axis.vertical,
             itemCount: 6,
             separatorBuilder: (context, _) => const SizedBox(height: 10),
-            itemBuilder: (context, index) => buildCard(items[index]),
+            itemBuilder: (context, index) => GestureDetector(
+              onTap: () {
+                if(items[index] == 0) {
+                  Get.to(() => AnonymousProfileScreen());
+                }
+              },
+              child: buildCard(items[index])
+            ),
           ),
         ),
       ),
