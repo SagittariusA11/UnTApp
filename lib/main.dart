@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
             Theme.of(context).textTheme,
         ),
       ),
-      home: const OnBoardingScreen()
+      home: FirebaseAuth.instance.currentUser!.uid == null? OnBoardingScreen() : HomeScreen()
       // home: FirebaseAuth.instance.currentUser!.uid == null? OnBoardingScreen() : HomeScreen(),
     );
   }
