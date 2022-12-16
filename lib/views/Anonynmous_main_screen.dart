@@ -7,11 +7,11 @@ import 'column_list.dart';
 
 class screen2 extends StatefulWidget {
   @override
-  _AnonynmousmainscreenWidgetState createState() =>
-      _AnonynmousmainscreenWidgetState();
+  _AnonynmousmainScreenWidgetState createState() =>
+      _AnonynmousmainScreenWidgetState();
 }
 
-class _AnonynmousmainscreenWidgetState extends State<screen2> {
+class _AnonynmousmainScreenWidgetState extends State<screen2> {
   @override
   Widget build(BuildContext context) {
     // Figma Flutter Generator AnonynmousmainscreenWidget - FRAME
@@ -116,8 +116,14 @@ class _AnonynmousmainscreenWidgetState extends State<screen2> {
 
                                     ],
                                   )
-                                ])),
-                      ])))),
+                                ]
+                            )
+                        ),
+                      ]
+                  )
+              )
+          )
+      ),
       designSize: const Size(380, 725),
     );
   }

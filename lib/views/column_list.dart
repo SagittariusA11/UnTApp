@@ -3,10 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+
 import 'package:untvoice/models/anonymous_user_model.dart';
 
 
 import '../controller/data_controller.dart';
+
+
+import '../profile/anonymous_profile_screen.dart';
+
 
 class chatlist extends StatefulWidget {
 
@@ -50,6 +55,7 @@ class _RelatedListState extends State<chatlist> {
       builder: (controller, child) => Container(
         height: 477.0, //seen dekhna padega,tobe changed accordingly
         width: 360,
+
 
         child: SizedBox(
           height: 75.0,

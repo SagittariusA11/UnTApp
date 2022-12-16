@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:scroll_page_view/pager/page_controller.dart';
 import 'package:scroll_page_view/pager/scroll_page_view.dart';
-import 'package:untvoice/views/Anonynmous_main_screen.dart';
+import 'package:untvoice/views/anonynmous_main_screen.dart';
 
 import '../controller/data_controller.dart';
 
