@@ -33,8 +33,8 @@ class _AddProfileScreenState extends State<AddProfileScreen> {
 
   TextEditingController firstNameController = TextEditingController();
   TextEditingController lastNameController = TextEditingController();
-  TextEditingController mobileNumberController = TextEditingController();
   TextEditingController dob = TextEditingController();
+  TextEditingController mob = TextEditingController();
 
   imagePickDialog() {
     showDialog(
@@ -204,16 +204,16 @@ class _AddProfileScreenState extends State<AddProfileScreen> {
                 textField(
                     text: 'Mobile Number',
                     inputType: TextInputType.phone,
-                    controller: mobileNumberController,
+                    controller: mob,
                     validator: (String input) {
-                      if (mobileNumberController.text.isEmpty) {
+                      if (mob.text.isEmpty) {
                         Get.snackbar('Warning', 'First Name is required.',
                             colorText: Colors.white,
                             backgroundColor: Colors.blue);
                         return '';
                       }
 
-                      if (mobileNumberController.text.length < 10) {
+                      if (mob.text.length < 10) {
                         Get.snackbar('Warning', 'Enter valid phone number.',
                             colorText: Colors.white,
                             backgroundColor: Colors.blue);
@@ -318,7 +318,8 @@ class _AddProfileScreenState extends State<AddProfileScreen> {
 
                       String imageUrl = await authController!.uploadImageToFirebaseStorage(profileImage!);
 
-                      authController!.uploadProfileData(imageUrl, firstNameController.text.trim(), lastNameController.text.trim(), mobileNumberController.text.trim(), dob.text.trim(), selectedRadio ==0 ? "Male": "Female");
+                      authController!.uploadProfileData(imageUrl, firstNameController.text.trim(), lastNameController.text.trim(),
+                          dob.text.trim(), mob.text.trim(), selectedRadio ==0 ? "Male": "Female");
 
                     },
                   ),

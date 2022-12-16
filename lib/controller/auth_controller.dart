@@ -100,7 +100,7 @@ class AuthController extends GetxController{
 
 
   uploadProfileData(String imageUrl, String firstName, String lastName,
-      String mobileNumber, String dob, String gender) {
+      String dob, String gender, String mob) {
 
     String uid = FirebaseAuth.instance.currentUser!.uid;
 
@@ -109,7 +109,8 @@ class AuthController extends GetxController{
       'first': firstName,
       'last': lastName,
       'dob': dob,
-      'gender': gender
+      'gender': gender,
+      'mob': mob
     }).then((value) {
       isProfileInformationLoading(false);
       Get.offAll(()=> HomeScreen());
