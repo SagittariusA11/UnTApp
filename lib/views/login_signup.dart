@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:untvoice/profile/add_profile.dart';
-import 'package:untvoice/profile/profile_screen.dart';
 
 import '../controller/auth_controller.dart';
 import '../utils/app_color.dart';
