@@ -173,7 +173,7 @@ class _LoginViewState extends State<LoginView> {
             children: [
               myTextFieldEmail(
                   bool: false,
-                  prefixicon: 'assets/mail.png',
+                  prefixicon: 'assets/login/mail.png',
                   text: 'sarasmith12@gmail.com',
                   validator: (String input){
                     if(input.isEmpty){
@@ -193,8 +193,8 @@ class _LoginViewState extends State<LoginView> {
               ),
               myTextFieldPassword(
                   bool: true,
-                  prefixicon: 'assets/lock.png',
-                  suffixicon: 'assets/eye.png',
+                  prefixicon: 'assets/login/lock.png',
+                  suffixicon: 'assets/login/eye.png',
                   text: 'password',
                   validator: (String input){
                     if(input.isEmpty){
@@ -219,7 +219,7 @@ class _LoginViewState extends State<LoginView> {
                           children: [
                             myTextFieldEmail(
                                 bool: false,
-                                prefixicon: 'assets/lock.png',
+                                prefixicon: 'assets/login/lock.png',
                                 text: 'enter your email...',
                                 controller: forgetEmailController
                             ),
@@ -291,7 +291,7 @@ class _LoginViewState extends State<LoginView> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               socialAppsIcons(
-                  text: 'assets/google.png',
+                  text: 'assets/login/google.png',
                   onPressed: (){
 
                     // authController.signInWithGoogle();
@@ -337,7 +337,7 @@ class _LoginViewState extends State<LoginView> {
 
             myTextFieldEmail(
                 bool: false,
-                prefixicon: 'assets/mail.png',
+                prefixicon: 'assets/login/mail.png',
                 text: 'Email',
                 validator: (String input){
                   if(input.isEmpty){
@@ -357,8 +357,8 @@ class _LoginViewState extends State<LoginView> {
             ),
             myTextFieldPassword(
                 bool: true,
-                prefixicon: 'assets/lock.png',
-                suffixicon: 'assets/eye.png',
+                prefixicon: 'assets/login/lock.png',
+                suffixicon: 'assets/login/eye.png',
                 text: 'password',
                 validator: (String input){
                   if(input.isEmpty){
@@ -378,8 +378,8 @@ class _LoginViewState extends State<LoginView> {
             ),
             myTextFieldPassword(
                 bool: true,
-                prefixicon: 'assets/lock.png',
-                suffixicon: 'assets/eye.png',
+                prefixicon: 'assets/login/lock.png',
+                suffixicon: 'assets/login/eye.png',
                 text: 'Re-enter password',
                 validator: (input){
                   if(input != passwordController.text.trim()){
@@ -420,7 +420,7 @@ class _LoginViewState extends State<LoginView> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 socialAppsIcons(
-                    text: 'assets/google.png',
+                    text: 'assets/login/google.png',
                     onPressed: (){
                     }
                 ),

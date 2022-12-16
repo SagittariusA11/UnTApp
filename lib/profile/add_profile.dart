@@ -79,7 +79,7 @@ class _AddProfileScreenState extends State<AddProfileScreen> {
 
                 },
                 child: Image.asset(
-                  'assets/gallary.png',
+                  'assets/login/gallary.png',
                   width: 25,
                   height: 25,
                 ),
@@ -233,7 +233,7 @@ class _AddProfileScreenState extends State<AddProfileScreen> {
                     decoration: InputDecoration(
                       contentPadding: EdgeInsets.only(top: 10, left: 10),
                       suffixIcon: Image.asset(
-                        'assets/calender.png',
+                        'assets/login/calender.png',
                         cacheHeight: 20,
                       ),
                       hintText: 'Date Of Birth',

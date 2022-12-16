@@ -67,7 +67,7 @@ class HomeScreen extends StatelessWidget {
                         heading: "Talk Anonymously",
                         content:
                         'Talk to someone who has faced the problem you\'re facing anonymously on call or chat.',
-                        icon: 'assets/anonymous.png',
+                        icon: 'assets/home_screen/anonymous.png',
                         backgroundColor: Color(0xff50C8AA),
                       ),
                       SizedBox(
@@ -77,7 +77,7 @@ class HomeScreen extends StatelessWidget {
                         heading: 'Consult with the Professionals!',
                         content:
                         'Share your problems with the experts in the field.',
-                        icon: 'assets/professional.jpg',
+                        icon: 'assets/home_screen/professional.jpg',
                         backgroundColor: Color(0xffC688FC),
                       ),
                       SizedBox(
@@ -87,7 +87,7 @@ class HomeScreen extends StatelessWidget {
                         heading: 'Career Counselling',
                         content:
                         'Get help and consulatation from the experienced people to make the right career choice.',
-                        icon: 'assets/career.png',
+                        icon: 'assets/home_screen/career.png',
                         backgroundColor: Color(0xffABA03A),
                       ),
                       SizedBox(
@@ -97,7 +97,7 @@ class HomeScreen extends StatelessWidget {
                         heading: 'Discussion Forum',
                         content:
                         'Discuss and share your problems and experiences in a shared forum with the community.',
-                        icon: 'assets/forum.png',
+                        icon: 'assets/home_screen/forum.png',
                         backgroundColor: Color(0xff7AAB3A),
                       ),
                       SizedBox(
@@ -249,7 +249,7 @@ class Card extends StatelessWidget {
                     alignment: Alignment.centerLeft,
                     margin: EdgeInsets.only(left: 3),
                     child: Image.asset(
-                      'assets/right.png',
+                      'assets/home_screen/right.png',
                       width: 43,
                       color: Colors.white,
                     ),
