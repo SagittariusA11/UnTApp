@@ -112,7 +112,7 @@ class _AnonynmousmainScreenWidgetState extends State<screen2> {
                                     MainAxisAlignment.spaceAround,
                                     children: [
 
-                                      chatlist(),
+                                      // chatlist(),
 
                                     ],
                                   )
