@@ -26,7 +26,6 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       await controller.getUserProfileData();
-      await controller.getLoginUserProduct();
       setState(() {});
     });
     super.initState();

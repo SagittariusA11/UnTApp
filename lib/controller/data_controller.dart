@@ -66,6 +66,7 @@ class DataController extends GetxController {
           loadedCounsellors.add(Counsellor(
             charges: result['charges'],
             dob: result['dob'],
+            age: result['age'],
             firstname: result['first'],
             gender: result['gender'],
             image: result['image'],
