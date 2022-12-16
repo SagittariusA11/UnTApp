@@ -1,14 +1,35 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:scroll_page_view/pager/page_controller.dart';
 import 'package:scroll_page_view/pager/scroll_page_view.dart';
+import 'package:untvoice/views/Anonynmous_main_screen.dart';
 
-class HomeScreen extends StatelessWidget {
+import '../controller/data_controller.dart';
+
+class HomeScreen extends StatefulWidget {
   static const _images = [
     'https://picjumbo.com/wp-content/uploads/the-golden-gate-bridge-sunset-1080x720.jpg',
     'https://cdn.mos.cms.futurecdn.net/Nxz3xSGwyGMaziCwiAC5WW-1024-80.jpg',
     'https://wallpaperaccess.com/full/19921.jpg',
     'https://images.pexels.com/photos/2635817/pexels-photo-2635817.jpeg?auto=compress&crop=focalpoint&cs=tinysrgb&fit=crop&fp-y=0.6&h=500&sharp=20&w=1400',
   ];
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  final DataController controller = Get.put(DataController());
+
+  @override
+  void initState() {
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      await controller.getUserProfileData();
+      setState(() {});
+    });
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +52,7 @@ class HomeScreen extends StatelessWidget {
                         height: 200,
                         child: ScrollPageView(
                           controller: ScrollPageController(),
-                          children: _images
+                          children: HomeScreen._images
                               .map((image) => _imageView(image))
                               .toList(),
                         ),
@@ -52,7 +73,7 @@ class HomeScreen extends StatelessWidget {
                         height: 4,
                       ),
                       Text(
-                        'Hey, Vaibhav!',
+                        'Hey,${controller.dataNotifier['first']}!',
                         style: TextStyle(
                           fontSize: 20,
                           color: Colors.white,
@@ -63,12 +84,17 @@ class HomeScreen extends StatelessWidget {
                       SizedBox(
                         height: 20,
                       ),
-                      Card(
-                        heading: "Talk Anonymously",
-                        content:
-                        'Talk to someone who has faced the problem you\'re facing anonymously on call or chat.',
-                        icon: 'assets/home_screen/anonymous.png',
-                        backgroundColor: Color(0xff50C8AA),
+                      InkWell(
+                        onTap: () {
+                          Get.to(() => screen2());},
+                        child: Card(
+                          heading: "Talk Anonymously",
+                          content:
+                          'Talk to someone who has faced the problem you\'re facing anonymously on call or chat.',
+                          icon: 'assets/home_screen/anonymous.png',
+                          backgroundColor: Color(0xff50C8AA),
+                        ),
+
                       ),
                       SizedBox(
                         height: 15,

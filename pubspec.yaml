@@ -71,10 +71,18 @@ flutter:
   # the material Icons class.
   uses-material-design: true
 
+  fonts:
+    - family: Outfit
+      fonts:
+        - asset: assets/fonts/Outfit-Regular.ttf
+        - asset: assets/fonts/Outfit-Bold.otf
+          weight: 700
+
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/login/
-    - assets/home_screen/
+      - assets/login/
+      - assets/home_screen/
+      - assets/images/
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 

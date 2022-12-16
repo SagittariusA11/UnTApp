@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
@@ -317,9 +318,11 @@ class _AddProfileScreenState extends State<AddProfileScreen> {
                       authController!.isProfileInformationLoading(true);
 
                       String imageUrl = await authController!.uploadImageToFirebaseStorage(profileImage!);
+                      FirebaseAuth auth = FirebaseAuth.instance;
+                      String uid = auth.currentUser!.uid;
 
                       authController!.uploadProfileData(imageUrl, firstNameController.text.trim(), lastNameController.text.trim(),
-                          dob.text.trim(), mob.text.trim(), selectedRadio ==0 ? "Male": "Female");
+                          dob.text.trim(), mob.text.trim(), selectedRadio ==0 ? "Male": "Female",uid);
 
                     },
                   ),
