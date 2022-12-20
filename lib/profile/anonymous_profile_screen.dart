@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:untvoice/model/anonymous_profile_screen_data.dart';
+import 'package:get/get.dart';
 
 class AnonymousProfileScreen extends StatefulWidget {
   const AnonymousProfileScreen({Key? key}) : super(key: key);
@@ -10,9 +11,20 @@ class AnonymousProfileScreen extends StatefulWidget {
 }
 
 class _AnonymousProfileScreenState extends State<AnonymousProfileScreen> {
-
+  Map dataOfcounsellor = {'first': '', 'age': '','longDetails':'','rate':'','imageUrl':''};
   @override
   Widget build(BuildContext context) {
+    var data = Get.arguments;
+    final newDataOfCousellor = dataOfcounsellor;
+    newDataOfCousellor['first'] = data['first'];
+    newDataOfCousellor['age'] = data['age'];
+    newDataOfCousellor['longDetails'] = data['longDetails'];
+    newDataOfCousellor['rate'] = data['rate'];
+    newDataOfCousellor['imageUrl'] = data['imageUrl'];
+    dataOfcounsellor = newDataOfCousellor;
+    debugPrint(dataOfcounsellor.toString());
+
+
     return ScreenUtilInit(
         builder: (context, child) => SafeArea(
           child: Container(
@@ -35,13 +47,13 @@ class _AnonymousProfileScreenState extends State<AnonymousProfileScreen> {
                               Container(
                                   height: 80,
                                   width: 80,
-                                  child: Image.asset('assets/images/Ellipse6.png',)
+                                  child: Image.network(dataOfcounsellor['imageUrl'])
                               ),
                               SizedBox(
                                 height: 10,
                               ),
-                              myText('Priyanka Singh', 15, FontWeight.w900),
-                              myText('26 Yrs', 13, FontWeight.w800),
+                              myText(dataOfcounsellor['first'], 15, FontWeight.w900),
+                              myText('${dataOfcounsellor['age']} Yrs', 13, FontWeight.w800),
                             ],
                           )
                       )
@@ -69,7 +81,7 @@ class _AnonymousProfileScreenState extends State<AnonymousProfileScreen> {
                       ),
                       Container(
                           padding: EdgeInsets.fromLTRB(20, 0, 20, 10),
-                          child: myText(longDetails, 15, FontWeight.w400)
+                          child: myText(dataOfcounsellor['longDetails'], 15, FontWeight.w400)
                       ),
                     ],
                   ),
@@ -123,7 +135,7 @@ class _AnonymousProfileScreenState extends State<AnonymousProfileScreen> {
                             Container(
                               padding: EdgeInsets.only(top: 5, bottom: 5),
                               height: 40,
-                              child: myText('₹ 8', 28, FontWeight.w900),
+                              child: myText('₹ ${dataOfcounsellor['rate']}', 28, FontWeight.w900),
                             ),
                             myText('per minute', 17, FontWeight.w400),
                             Container(height: 5)

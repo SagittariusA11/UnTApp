@@ -1,2 +1,0 @@
-
-String longDetails = "I've dealt with a person dealing with depression. That person is none other than my own sister. I've noticed her skipping meals, quittin her job, crying for no reason and I've heard her crying overthe phone late at night begging some gut to unblock her. I just couldn't see her go throuh all of that alone. As heloved makeup, I forced her to attend a makeup school loafed in Dubai.";
