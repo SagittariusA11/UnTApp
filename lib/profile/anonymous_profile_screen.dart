@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:untvoice/views/dial_screen.dart';
 
 class AnonymousProfileScreen extends StatefulWidget {
   const AnonymousProfileScreen({Key? key}) : super(key: key);
@@ -10,17 +11,18 @@ class AnonymousProfileScreen extends StatefulWidget {
 }
 
 class _AnonymousProfileScreenState extends State<AnonymousProfileScreen> {
-  Map dataOfcounsellor = {'first': '', 'age': '','longDetails':'','rate':'','imageUrl':''};
+  Map dataOfcounsellor = {'first': '', 'age': '','longDetails':'','rate':'','imageUrl':'', 'uid':''};
   @override
   Widget build(BuildContext context) {
     var data = Get.arguments;
-    final newDataOfCousellor = dataOfcounsellor;
-    newDataOfCousellor['first'] = data['first'];
-    newDataOfCousellor['age'] = data['age'];
-    newDataOfCousellor['longDetails'] = data['longDetails'];
-    newDataOfCousellor['rate'] = data['rate'];
-    newDataOfCousellor['imageUrl'] = data['imageUrl'];
-    dataOfcounsellor = newDataOfCousellor;
+    final newDataOfCounsellor = dataOfcounsellor;
+    newDataOfCounsellor['first'] = data['first'];
+    newDataOfCounsellor['age'] = data['age'];
+    newDataOfCounsellor['longDetails'] = data['longDetails'];
+    newDataOfCounsellor['rate'] = data['rate'];
+    newDataOfCounsellor['imageUrl'] = data['imageUrl'];
+    newDataOfCounsellor['uid'] = data['uid'];
+    dataOfcounsellor = newDataOfCounsellor;
     debugPrint(dataOfcounsellor.toString());
 
 
@@ -157,7 +159,7 @@ class _AnonymousProfileScreenState extends State<AnonymousProfileScreen> {
                       myText('Available at:', 19, FontWeight.w900),
                       GestureDetector(
                         onTap: () {
-                          // TODO: Implement Call
+                          Get.to(() => DialScreen());
                         },
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,

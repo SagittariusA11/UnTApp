@@ -72,6 +72,7 @@ class _RelatedListState extends State<chatlist> {
                             'age': controller.counsellorData[index].age,
                             'longDetails': controller.counsellorData[index].longDetails,
                             'imageUrl': controller.counsellorData[index].image,
+                            'uid': controller.counsellorData[index].uid,
                           });
                         },
                         child: Container(

@@ -99,13 +99,13 @@ class AuthController extends GetxController{
 
 
 
-  uploadProfileData(String imageUrl, String firstName, String lastName,
+  uploadProfileData(String firstName, String lastName,
       String dob, String gender, String mob,String uid) {
 
     String uid = FirebaseAuth.instance.currentUser!.uid;
 
     FirebaseFirestore.instance.collection('users').doc(uid).set({
-      'image': imageUrl,
+      // 'image': imageUrl,
       'first': firstName,
       'last': lastName,
       'dob': dob,
