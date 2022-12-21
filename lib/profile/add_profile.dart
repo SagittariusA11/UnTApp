@@ -24,7 +24,7 @@ class _AddProfileScreenState extends State<AddProfileScreen> {
       context: context,
       initialDate: DateTime.now(),
       initialDatePickerMode: DatePickerMode.day,
-      firstDate: DateTime(1950),
+      firstDate: DateTime(1900),
       lastDate: DateTime(2101),
     );
     if (picked != null) {
@@ -37,60 +37,60 @@ class _AddProfileScreenState extends State<AddProfileScreen> {
   TextEditingController dob = TextEditingController();
   TextEditingController mob = TextEditingController();
 
-  imagePickDialog() {
-    showDialog(
-      context: context,
-      builder: (context) {
-        return AlertDialog(
-          title: Text('Choose Image Source'),
-          content: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              InkWell(
-                onTap: () async {
-                  final ImagePicker _picker = ImagePicker();
-                  final XFile? image =
-                  await _picker.pickImage(source: ImageSource.camera);
-                  if (image != null) {
-                    profileImage = File(image.path);
-                    setState(() {});
-                    Navigator.pop(context);
-                  }
-
-                },
-                child: Icon(
-                  Icons.camera_alt,
-                  size: 30,
-                ),
-              ),
-              SizedBox(
-                width: 20,
-              ),
-              InkWell(
-                onTap: () async {
-                  final ImagePicker _picker = ImagePicker();
-                  final XFile? image = await _picker.pickImage(
-                    source: ImageSource.gallery,
-                  );
-                  if (image != null) {
-                    profileImage = File(image.path);
-                    setState(() {});
-                    Navigator.pop(context);
-                  }
-
-                },
-                child: Image.asset(
-                  'assets/login/gallary.png',
-                  width: 25,
-                  height: 25,
-                ),
-              ),
-            ],
-          ),
-        );
-      },
-    );
-  }
+  // imagePickDialog() {
+  //   showDialog(
+  //     context: context,
+  //     builder: (context) {
+  //       return AlertDialog(
+  //         title: Text('Choose Image Source'),
+  //         content: Row(
+  //           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+  //           children: [
+  //             InkWell(
+  //               onTap: () async {
+  //                 final ImagePicker _picker = ImagePicker();
+  //                 final XFile? image =
+  //                 await _picker.pickImage(source: ImageSource.camera);
+  //                 if (image != null) {
+  //                   profileImage = File(image.path);
+  //                   setState(() {});
+  //                   Navigator.pop(context);
+  //                 }
+  //
+  //               },
+  //               child: Icon(
+  //                 Icons.camera_alt,
+  //                 size: 30,
+  //               ),
+  //             ),
+  //             SizedBox(
+  //               width: 20,
+  //             ),
+  //             InkWell(
+  //               onTap: () async {
+  //                 final ImagePicker _picker = ImagePicker();
+  //                 final XFile? image = await _picker.pickImage(
+  //                   source: ImageSource.gallery,
+  //                 );
+  //                 if (image != null) {
+  //                   profileImage = File(image.path);
+  //                   setState(() {});
+  //                   Navigator.pop(context);
+  //                 }
+  //
+  //               },
+  //               child: Image.asset(
+  //                 'assets/login/gallary.png',
+  //                 width: 25,
+  //                 height: 25,
+  //               ),
+  //             ),
+  //           ],
+  //         ),
+  //       );
+  //     },
+  //   );
+  // }
 
   File? profileImage;
 
@@ -126,57 +126,57 @@ class _AddProfileScreenState extends State<AddProfileScreen> {
                 SizedBox(
                   height: Get.width * 0.1,
                 ),
-                InkWell(
-                  onTap: () {
-                    imagePickDialog();
-                  },
-                  child: Container(
-                    width: 120,
-                    height: 120,
-                    margin: EdgeInsets.only(top: 35),
-                    padding: EdgeInsets.all(2),
-                    decoration: BoxDecoration(
-                      color: AppColors.blue,
-                      borderRadius: BorderRadius.circular(70),
-                      gradient: LinearGradient(
-                        colors: [
-                          Color(0xff7DDCFB),
-                          Color(0xffBC67F2),
-                          Color(0xffACF6AF),
-                          Color(0xffF95549),
-                        ],
-                      ),
-                    ),
-                    child: Column(
-                      children: [
-                        Container(
-                          padding: EdgeInsets.all(2),
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(70),
-                          ),
-                          child: profileImage == null
-                              ? CircleAvatar(
-                            radius: 56,
-                            backgroundColor: Colors.white,
-                            child: Icon(
-                              Icons.camera_alt,
-                              color: Colors.blue,
-                              size: 50,
-                            ),
-                          )
-                              : CircleAvatar(
-                            radius: 56,
-                            backgroundColor: Colors.white,
-                            backgroundImage: FileImage(
-                              profileImage!,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
+                // InkWell(
+                //   onTap: () {
+                //     imagePickDialog();
+                //   },
+                //   child: Container(
+                //     width: 120,
+                //     height: 120,
+                //     margin: EdgeInsets.only(top: 35),
+                //     padding: EdgeInsets.all(2),
+                //     decoration: BoxDecoration(
+                //       color: AppColors.blue,
+                //       borderRadius: BorderRadius.circular(70),
+                //       gradient: LinearGradient(
+                //         colors: [
+                //           Color(0xff7DDCFB),
+                //           Color(0xffBC67F2),
+                //           Color(0xffACF6AF),
+                //           Color(0xffF95549),
+                //         ],
+                //       ),
+                //     ),
+                //     child: Column(
+                //       children: [
+                //         Container(
+                //           padding: EdgeInsets.all(2),
+                //           decoration: BoxDecoration(
+                //             color: Colors.white,
+                //             borderRadius: BorderRadius.circular(70),
+                //           ),
+                //           child: profileImage == null
+                //               ? CircleAvatar(
+                //             radius: 56,
+                //             backgroundColor: Colors.white,
+                //             child: Icon(
+                //               Icons.camera_alt,
+                //               color: Colors.blue,
+                //               size: 50,
+                //             ),
+                //           )
+                //               : CircleAvatar(
+                //             radius: 56,
+                //             backgroundColor: Colors.white,
+                //             backgroundImage: FileImage(
+                //               profileImage!,
+                //             ),
+                //           ),
+                //         ),
+                //       ],
+                //     ),
+                //   ),
+                // ),
                 SizedBox(
                   height: Get.width * 0.1,
                 ),
@@ -306,22 +306,22 @@ class _AddProfileScreenState extends State<AddProfileScreen> {
                         return null;
                       }
 
-                      if(profileImage == null){
-                        Get.snackbar(
-                            'Warning', "Image is required.",
-                            colorText: Colors.white,
-                            backgroundColor: Colors.blue);
-                        return null;
-                      }
+                      // if(profileImage == null){
+                      //   Get.snackbar(
+                      //       'Warning', "Image is required.",
+                      //       colorText: Colors.white,
+                      //       backgroundColor: Colors.blue);
+                      //   return null;
+                      // }
 
 
                       authController!.isProfileInformationLoading(true);
 
-                      String imageUrl = await authController!.uploadImageToFirebaseStorage(profileImage!);
+                      // String imageUrl = await authController!.uploadImageToFirebaseStorage(profileImage!);
                       FirebaseAuth auth = FirebaseAuth.instance;
                       String uid = auth.currentUser!.uid;
 
-                      authController!.uploadProfileData(imageUrl, firstNameController.text.trim(), lastNameController.text.trim(),
+                      authController!.uploadProfileData(firstNameController.text.trim(), lastNameController.text.trim(),
                           dob.text.trim(), mob.text.trim(), selectedRadio ==0 ? "Male": "Female",uid);
 
                     },
