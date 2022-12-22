@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:untvoice/models/DialScreen.dart';
 import 'package:untvoice/views/dial_screen.dart';
 
 class AnonymousProfileScreen extends StatefulWidget {
@@ -159,7 +160,8 @@ class _AnonymousProfileScreenState extends State<AnonymousProfileScreen> {
                       myText('Available at:', 19, FontWeight.w900),
                       GestureDetector(
                         onTap: () {
-                          Get.to(() => DialScreen());
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (builder) => DialScreen()));
                         },
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
