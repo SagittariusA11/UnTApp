@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:untvoice/model/anonymous_profile_screen_data.dart';
+
 import 'package:get/get.dart';
 
 class AnonymousProfileScreen extends StatefulWidget {
