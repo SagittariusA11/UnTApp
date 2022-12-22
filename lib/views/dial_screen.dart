@@ -9,14 +9,14 @@ import '../utils/agora_config.dart';
 import '../utils/constraints.dart';
 import '../utils/size_config.dart';
 
-class DialScreen extends StatefulWidget {
-  const DialScreen({Key? key}) : super(key: key);
+class Body extends StatefulWidget {
+  const Body({Key? key}) : super(key: key);
 
   @override
-  State<DialScreen> createState() => _DialScreenState();
+  State<Body> createState() => _BodyState();
 }
 
-class _DialScreenState extends State<DialScreen> {
+class _BodyState extends State<Body> {
 
   bool _joined = false;
   int _remoteUid = 0;
@@ -28,7 +28,14 @@ class _DialScreenState extends State<DialScreen> {
   void initState() {
     super.initState();
     initPlatformState(context);
+
   }
+  // @override
+  // void didChangeDependencies() {
+  //   // TODO: implement didChangeDependencies
+  //   super.didChangeDependencies();
+  //   SizeConfig.init(context);
+  // }
 
   // Init the app
   Future<void> initPlatformState(BuildContext buildContext) async {
@@ -90,7 +97,7 @@ class _DialScreenState extends State<DialScreen> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             VerticalSpacing(),
-            DialUserPic(image: "assets/images/calling_face.png"),
+            const DialUserPic(image: "assets/images/calling_face.png"),
             VerticalSpacing(),
             Text(
               "Defne Demir",
@@ -107,7 +114,7 @@ class _DialScreenState extends State<DialScreen> {
                   : _remoteUid.toString(),
               style: TextStyle(color: Colors.white60),
             ),
-            Spacer(),
+
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
@@ -141,7 +148,7 @@ class _DialScreenState extends State<DialScreen> {
                 ),
               ],
             ),
-            const VerticalSpacing(),
+            // const VerticalSpacing(),
           ],
         ),
       ),
