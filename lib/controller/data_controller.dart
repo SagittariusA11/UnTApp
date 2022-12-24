@@ -75,6 +75,7 @@ class DataController extends GetxController {
             shortDetails: result['shortDetails'],
             uid: result.id,
             work: result['work'],
+            fcmToken: result['fcmToken'],
           ));
         }
       }

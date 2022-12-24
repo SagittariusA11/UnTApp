@@ -14,7 +14,6 @@ class screen2 extends StatefulWidget {
 class _AnonynmousmainScreenWidgetState extends State<screen2> {
   @override
   Widget build(BuildContext context) {
-    // Figma Flutter Generator AnonynmousmainscreenWidget - FRAME
 
     return ScreenUtilInit(
       builder: (context, child) => SafeArea(

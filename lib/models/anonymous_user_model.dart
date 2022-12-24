@@ -10,6 +10,7 @@ class Counsellor {
   final String shortDetails;
   final String longDetails;
   final String work;
+  final String fcmToken;
 
   Counsellor({
     required this.age,
@@ -23,5 +24,6 @@ class Counsellor {
     required this.shortDetails,
     required this.longDetails,
     required this.work,
+    required this.fcmToken,
   });
 }

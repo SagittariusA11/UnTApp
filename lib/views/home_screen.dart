@@ -1,3 +1,6 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -6,6 +9,7 @@ import 'package:scroll_page_view/pager/scroll_page_view.dart';
 import 'package:untvoice/views/anonynmous_main_screen.dart';
 
 import '../controller/data_controller.dart';
+import '../services/local_notification_services.dart';
 
 class HomeScreen extends StatefulWidget {
   static const _images = [
@@ -22,13 +26,19 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   final DataController controller = Get.put(DataController());
 
+
   @override
   void initState() {
+    super.initState();
+    FirebaseMessaging.instance.getInitialMessage();
+    FirebaseMessaging.onMessage.listen((message) {
+      LocalNotificationService.display(message);
+    });
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       await controller.getUserProfileData();
       setState(() {});
     });
-    super.initState();
+    LocalNotificationService.storeNotificationToken();
   }
 
   @override

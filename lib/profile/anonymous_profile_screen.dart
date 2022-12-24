@@ -1,8 +1,10 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:untvoice/models/DialScreen.dart';
+import 'package:untvoice/services/local_notification_services.dart';
 import 'package:untvoice/views/dial_screen.dart';
+
 
 class AnonymousProfileScreen extends StatefulWidget {
   const AnonymousProfileScreen({Key? key}) : super(key: key);
@@ -12,7 +14,11 @@ class AnonymousProfileScreen extends StatefulWidget {
 }
 
 class _AnonymousProfileScreenState extends State<AnonymousProfileScreen> {
-  Map dataOfcounsellor = {'first': '', 'age': '','longDetails':'','rate':'','imageUrl':'', 'uid':''};
+
+  Map dataOfcounsellor = {'first': '', 'age': '','longDetails':'','rate':'','imageUrl':'', 'uid':'', 'fcmToken':''};
+
+
+
   @override
   Widget build(BuildContext context) {
     var data = Get.arguments;
@@ -23,6 +29,7 @@ class _AnonymousProfileScreenState extends State<AnonymousProfileScreen> {
     newDataOfCounsellor['rate'] = data['rate'];
     newDataOfCounsellor['imageUrl'] = data['imageUrl'];
     newDataOfCounsellor['uid'] = data['uid'];
+    newDataOfCounsellor['fcmToken'] = data['fcmToken'];
     dataOfcounsellor = newDataOfCounsellor;
     debugPrint(dataOfcounsellor.toString());
 
@@ -160,8 +167,11 @@ class _AnonymousProfileScreenState extends State<AnonymousProfileScreen> {
                       myText('Available at:', 19, FontWeight.w900),
                       GestureDetector(
                         onTap: () {
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (builder) => DialScreen()));
+                          LocalNotificationService.sendNotification(
+                              'Calling', 'Calling_01',
+                              dataOfcounsellor['fcmToken']);
+                          // Navigator.push(context,
+                          //     MaterialPageRoute(builder: (builder) => DialScreen()));
                         },
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,

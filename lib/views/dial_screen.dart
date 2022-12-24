@@ -5,24 +5,24 @@ import 'package:permission_handler/permission_handler.dart';
 import '../models/dial_button.dart';
 import '../models/dial_user_pic.dart';
 import '../models/rounded_button.dart';
-import '../utils/agora_config.dart';
+import '../utils/tokens.dart';
 import '../utils/constraints.dart';
 import '../utils/size_config.dart';
 
-class Body extends StatefulWidget {
-  const Body({Key? key}) : super(key: key);
+class DialScreen extends StatefulWidget {
+  const DialScreen({Key? key}) : super(key: key);
 
   @override
-  State<Body> createState() => _BodyState();
+  State<DialScreen> createState() => _DialScreenState();
 }
 
-class _BodyState extends State<Body> {
+class _DialScreenState extends State<DialScreen> {
 
   bool _joined = false;
   int _remoteUid = 0;
   bool isMuted = false;
   bool isSpeakerOpen = false;
-  late RtcEngine engine;
+  RtcEngine? engine;
 
   @override
   void initState() {
@@ -30,12 +30,6 @@ class _BodyState extends State<Body> {
     initPlatformState(context);
 
   }
-  // @override
-  // void didChangeDependencies() {
-  //   // TODO: implement didChangeDependencies
-  //   super.didChangeDependencies();
-  //   SizeConfig.init(context);
-  // }
 
   // Init the app
   Future<void> initPlatformState(BuildContext buildContext) async {
@@ -46,7 +40,7 @@ class _BodyState extends State<Body> {
     RtcEngineContext context = RtcEngineContext(appId);
     engine = await RtcEngine.createWithContext(context);
     // Define event handling logic
-    engine.setEventHandler(RtcEngineEventHandler(
+    engine?.setEventHandler(RtcEngineEventHandler(
       joinChannelSuccess: (String channel, int uid, int elapsed) {
         print('joinChannelSuccess ${channel} ${uid}');
 
@@ -65,12 +59,12 @@ class _BodyState extends State<Body> {
         setState(() {
           _remoteUid = 0;
         });
-        engine.leaveChannel();
+        engine?.leaveChannel();
         Navigator.pop(buildContext);
       },
     ));
     // Join channel with channel name as 123
-    await engine.joinChannel(token, 'test', null, 0);
+    await engine?.joinChannel(agora_token, 'test', null, 0);
   }
 
   void switchSpeakerphone() {
@@ -78,8 +72,8 @@ class _BodyState extends State<Body> {
       isSpeakerOpen = !isSpeakerOpen;
     });
     try {
-      engine.setEnableSpeakerphone(isSpeakerOpen).then((value) {
-        engine.setInEarMonitoringVolume(400);
+      engine?.setEnableSpeakerphone(isSpeakerOpen).then((value) {
+        engine?.setInEarMonitoringVolume(400);
       }).catchError((err) {
         print('setEnableSpeakerphone $err');
       });
@@ -95,24 +89,29 @@ class _BodyState extends State<Body> {
         padding: const EdgeInsets.all(20.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            VerticalSpacing(),
-            const DialUserPic(image: "assets/images/calling_face.png"),
-            VerticalSpacing(),
-            Text(
-              "Defne Demir",
-              style: Theme.of(context)
-                  .textTheme
-                  .headline4!
-                  .copyWith(color: Colors.white),
-            ),
-            Text(
-              !_joined
-                  ? "Connecting..."
-                  : _remoteUid == 0
-                  ? "User waiting..."
-                  : _remoteUid.toString(),
-              style: TextStyle(color: Colors.white60),
+            Column(
+              children: [
+                VerticalSpacing(),
+                const DialUserPic(image: "assets/images/calling_face.png"),
+                VerticalSpacing(),
+                Text(
+                  "Defne Demir",
+                  style: Theme.of(context)
+                      .textTheme
+                      .headline4!
+                      .copyWith(color: Colors.white),
+                ),
+                Text(
+                  !_joined
+                      ? "Connecting..."
+                      : _remoteUid == 0
+                      ? "User waiting..."
+                      : _remoteUid.toString(),
+                  style: TextStyle(color: Colors.white60),
+                ),
+              ],
             ),
 
             Row(
@@ -126,13 +125,13 @@ class _BodyState extends State<Body> {
                     setState(() {
                       isMuted = !isMuted;
                     });
-                    engine.muteLocalAudioStream(isMuted);
+                    engine?.muteLocalAudioStream(isMuted);
                   },
                 ),
                 RoundedButton(
                   iconSrc: "assets/icons/call_end.svg",
                   press: () {
-                    engine.leaveChannel();
+                    engine?.leaveChannel();
                     Navigator.pop(context);
                   },
                   color: kRedColor,
@@ -148,7 +147,6 @@ class _BodyState extends State<Body> {
                 ),
               ],
             ),
-            // const VerticalSpacing(),
           ],
         ),
       ),
