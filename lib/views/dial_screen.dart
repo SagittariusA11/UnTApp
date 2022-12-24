@@ -10,14 +10,11 @@ import '../utils/constraints.dart';
 import '../utils/size_config.dart';
 
 class Body extends StatefulWidget {
-  const Body({Key? key}) : super(key: key);
-
   @override
-  State<Body> createState() => _BodyState();
+  _BodyState createState() => _BodyState();
 }
 
 class _BodyState extends State<Body> {
-
   bool _joined = false;
   int _remoteUid = 0;
   bool isMuted = false;
@@ -28,14 +25,7 @@ class _BodyState extends State<Body> {
   void initState() {
     super.initState();
     initPlatformState(context);
-
   }
-  // @override
-  // void didChangeDependencies() {
-  //   // TODO: implement didChangeDependencies
-  //   super.didChangeDependencies();
-  //   SizeConfig.init(context);
-  // }
 
   // Init the app
   Future<void> initPlatformState(BuildContext buildContext) async {
@@ -97,7 +87,7 @@ class _BodyState extends State<Body> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             VerticalSpacing(),
-            const DialUserPic(image: "assets/images/calling_face.png"),
+            DialUserPic(image: "assets/images/calling_face.png"),
             VerticalSpacing(),
             Text(
               "Defne Demir",
@@ -114,7 +104,7 @@ class _BodyState extends State<Body> {
                   : _remoteUid.toString(),
               style: TextStyle(color: Colors.white60),
             ),
-
+            Spacer(),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
@@ -148,7 +138,7 @@ class _BodyState extends State<Body> {
                 ),
               ],
             ),
-            // const VerticalSpacing(),
+            VerticalSpacing(),
           ],
         ),
       ),
