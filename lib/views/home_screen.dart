@@ -1,3 +1,6 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -5,6 +8,7 @@ import 'package:scroll_page_view/pager/page_controller.dart';
 import 'package:scroll_page_view/pager/scroll_page_view.dart';
 import 'package:untvoice/views/anonynmous_main_screen.dart';
 
+import '../controller/api_data.dart';
 import '../controller/data_controller.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -33,6 +37,17 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+
+    String? current_uid = FirebaseAuth.instance.currentUser?.uid.toString();
+    String? fcmToken = FirebaseMessaging.instance.getToken().toString();
+    FirebaseFirestore.instance.collection('users')
+        .doc(current_uid)
+        .set({
+      'fcmToken': fcmToken
+    },SetOptions(merge: true)).then((value){
+      //Do your stuff.
+    });
+
     return Scaffold(
       backgroundColor: const Color(0xFF000026),
       body: SafeArea(

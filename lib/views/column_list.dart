@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -6,6 +7,7 @@ import 'package:get/get_core/src/get_main.dart';
 
 import 'package:untvoice/models/anonymous_user_model.dart';
 
+import '../controller/api_data.dart';
 import '../controller/data_controller.dart';
 
 import '../profile/anonymous_profile_screen.dart';
@@ -66,6 +68,10 @@ class _RelatedListState extends State<chatlist> {
                     itemBuilder: (context, index) {
                       return InkWell(
                         onTap: () {
+                          String? current_uid = FirebaseAuth.instance.currentUser?.uid.toString();
+                          String current_user = controller.dataNotifier['first'];
+                          String to_user = controller.counsellorData[index].firstname;
+                          getData("$current_user'_'$to_user", current_uid!);
                           Get.to(() => AnonymousProfileScreen(), arguments: {
                             'first': controller.counsellorData[index].firstname,
                             'rate': controller.counsellorData[index].charges,

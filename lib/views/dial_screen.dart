@@ -1,7 +1,6 @@
 import 'package:agora_rtc_engine/rtc_engine.dart';
 import 'package:flutter/material.dart';
 import 'package:permission_handler/permission_handler.dart';
-
 import '../models/dial_button.dart';
 import '../models/dial_user_pic.dart';
 import '../models/rounded_button.dart';
@@ -15,6 +14,7 @@ class Body extends StatefulWidget {
 }
 
 class _BodyState extends State<Body> {
+
   bool _joined = false;
   int _remoteUid = 0;
   bool isMuted = false;
@@ -60,7 +60,7 @@ class _BodyState extends State<Body> {
       },
     ));
     // Join channel with channel name as 123
-    await engine.joinChannel(token, 'test', null, 0);
+    await engine.joinChannel(token, channelId, null, 1);
   }
 
   void switchSpeakerphone() {
