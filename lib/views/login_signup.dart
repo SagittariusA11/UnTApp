@@ -268,7 +268,6 @@ class _LoginViewState extends State<LoginView> {
 
                 authController.login(email: emailController.text.trim(),password: passwordController.text.trim());
 
-
               },
             ),
           )),
