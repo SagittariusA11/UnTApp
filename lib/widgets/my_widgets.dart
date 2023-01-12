@@ -31,62 +31,58 @@ Widget textField({text,TextEditingController? controller,Function? validator,Tex
   );
 }
 
-Widget myTextFieldPassword({text, String? prefixicon, String? suffixicon, bool, TextEditingController? controller,Function? validator}) {
-  return Container(
-    height: 45,
-    child: TextFormField(
-      validator: (input)=> validator!(input),
-      obscureText: bool,
-      controller: controller,
-      decoration: InputDecoration(
-          contentPadding:EdgeInsets.only(top: 5),
-          errorStyle: TextStyle(fontSize: 0),
-          hintStyle: TextStyle(
-            color: AppColors.genderTextColor,
-          ),
-          hintText: text,
-          prefixIcon: Image.asset(
-            prefixicon!,
-            cacheHeight: 20,
-          ),
-          suffixIcon: IconButton(
-              onPressed: (){
-                bool = !bool;
-              },
-              icon: Image.asset(
-                  suffixicon!,
-                  cacheHeight: 20,
-              )),
-          border: OutlineInputBorder(borderRadius: BorderRadius.circular(8.0))
-      ),
-    ),
-  );
-}
-
-Widget myTextFieldEmail({text, String? prefixicon, bool, TextEditingController? controller,Function? validator}) {
-  return Container(
-    height: 45,
-    child: TextFormField(
-
-      validator: (input)=> validator!(input),
-      obscureText: bool,
-      controller: controller,
-      decoration: InputDecoration(
-          contentPadding:EdgeInsets.only(top: 5),
-          errorStyle: TextStyle(fontSize: 0),
-          hintStyle: TextStyle(
-            color: AppColors.genderTextColor,
-          ),
-          hintText: text,
-          prefixIcon: Image.asset(
-            prefixicon!,
-            cacheHeight: 20,
-          ),
-          border: OutlineInputBorder(borderRadius: BorderRadius.circular(8.0))
-      ),
-    ),
-  );
-}
+// Widget myTextFieldPassword({text, String? prefixicon, String? suffixicon, bool, TextEditingController? controller,Function? validator}) {
+//   return Container(
+//     height: 45,
+//     child: TextFormField(
+//       validator: (input)=> validator!(input),
+//       obscureText: bool,
+//       controller: controller,
+//       decoration: InputDecoration(
+//           contentPadding:EdgeInsets.only(top: 5),
+//           errorStyle: TextStyle(fontSize: 0),
+//           hintStyle: TextStyle(
+//             color: AppColors.genderTextColor,
+//           ),
+//           hintText: text,
+//           prefixIcon: Image.asset(
+//             prefixicon!,
+//             cacheHeight: 20,
+//           ),
+//           suffixIcon: IconButton(
+//               onPressed: (){
+//                 bool = !bool;
+//               },
+//               icon: Image.asset(
+//                   suffixicon!,
+//                   cacheHeight: 20,
+//               )),
+//           border: InputBorder.none
+//       ),
+//     ),
+//   );
+// }
+//
+// Widget myTextFieldEmail({text, bool, TextEditingController? controller,Function? validator}) {
+//   return Container(
+//     height: 45,
+//     child: TextFormField(
+//
+//       validator: (input)=> validator!(input),
+//       obscureText: bool,
+//       controller: controller,
+//       decoration: InputDecoration(
+//           contentPadding:EdgeInsets.only(top: 5),
+//           errorStyle: TextStyle(fontSize: 0),
+//           hintStyle: TextStyle(
+//             color: AppColors.genderTextColor,
+//           ),
+//           hintText: text,
+//           border: OutlineInputBorder(borderRadius: BorderRadius.circular(8.0))
+//       ),
+//     ),
+//   );
+// }
 
 Widget socialAppsIcons({text,Function? onPressed}) {
   return InkWell(
