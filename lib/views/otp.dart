@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:pinput/pinput.dart';
 import 'package:untvoice/profile/add_profile.dart';
+import 'package:untvoice/views/home_screen.dart';
 import 'package:untvoice/widgets/my_widgets.dart';
 
 import 'login_signup.dart';
@@ -68,7 +69,7 @@ class _otpVerifyState extends State<otpVerify> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image.asset(
-                'assets/img1.png',
+                'assets/login/logo.png',
                 width: 150,
                 height: 150,
               ),
@@ -103,25 +104,25 @@ class _otpVerifyState extends State<otpVerify> {
                 height: 20,
               ),
               SizedBox(
-                width: double.infinity,
-                height: 45,
-                child: elevatedButton(
-                  text: "Verify Phone Number",
-                  onpress: () async {
-                    try{
-                      PhoneAuthCredential credential = PhoneAuthProvider.credential(
-                          verificationId: LoginView.verify,
-                          smsCode: code);
+                  width: double.infinity,
+                  height: 45,
+                  child: elevatedButton(
+                    text: "Verify Phone Number",
+                    onpress: () async {
+                      try{
+                        PhoneAuthCredential credential = PhoneAuthProvider.credential(
+                            verificationId: LoginView.verify,
+                            smsCode: code);
 
-                      // Sign the user in (or link) with the credential
-                      await auth.signInWithCredential(credential);
-                      Get.to(()=>AddProfileScreen());
-                    }
-                    catch(e){
-                      print(e);
-                    }
-                  },
-                )
+                        // Sign the user in (or link) with the credential
+                        await auth.signInWithCredential(credential);
+                        Get.to(()=>HomeScreen());
+                      }
+                      catch(e){
+                        print(e);
+                      }
+                    },
+                  )
               ),
               Row(
                 children: [
