@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:untvoice/views/rowlist.dart';
 
+import 'UPI_payment.dart';
 import 'column_list.dart';
 
 class screen2 extends StatefulWidget {
@@ -58,16 +59,26 @@ class _AnonynmousmainScreenWidgetState extends State<screen2> {
                                     height: 1))
                           ],
                         ),
-                        Text('+ Add Money',
-                            textAlign: TextAlign.left,
-                            style: TextStyle(
-                                color: Color.fromRGBO(255, 255, 255, 1),
-                                fontFamily: 'Outfit',
-                                fontSize: 15,
-                                letterSpacing:
-                                0 /*percentages not used in flutter. defaulting to zero*/,
-                                fontWeight: FontWeight.bold,
-                                height: 1)),
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(context,
+                                MaterialPageRoute(builder: (builder) => UPI_Payment(
+                                  amount: 1,
+                                  receiverUpiID: '7004164334@paytm',
+                                  receiverName: 'Manash Kumar',
+                                )));
+                          },
+                          child: Text('+ Add Money',
+                              textAlign: TextAlign.left,
+                              style: TextStyle(
+                                  color: Color.fromRGBO(255, 255, 255, 1),
+                                  fontFamily: 'Outfit',
+                                  fontSize: 15,
+                                  letterSpacing:
+                                  0 /*percentages not used in flutter. defaulting to zero*/,
+                                  fontWeight: FontWeight.bold,
+                                  height: 1)),
+                        ),
                         Container(
                             width: 390,
                             height: 600,

@@ -178,12 +178,7 @@ class _AnonymousProfileScreenState extends State<AnonymousProfileScreen> {
                       ),
                       GestureDetector(
                         onTap: () {
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (builder) => UPI_Payment(
-                                amount: 1,
-                                receiverUpiID: '7004164334@paytm',
-                                receiverName: dataOfcounsellor['first'],
-                              )));
+                          /// TODO: Implement OnTap
                         },
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,

@@ -59,6 +59,7 @@ class _UPI_PaymentState extends State<UPI_Payment> {
       transactionRefId: 'AnyRandomText',
       transactionNote: 'Testing',
       amount: amount,
+      flexibleAmount: true
     );
   }
 
