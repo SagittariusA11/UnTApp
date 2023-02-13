@@ -17,8 +17,7 @@ class LoginView extends StatefulWidget {
 
 class _LoginViewState extends State<LoginView> {
   TextEditingController countrycode = TextEditingController();
-  // TextEditingController phone = TextEditingController();
-  var phone = "";
+  TextEditingController phone = TextEditingController();
 
   @override
   void initState() {
@@ -92,9 +91,7 @@ class _LoginViewState extends State<LoginView> {
                     ),
                     Expanded(
                         child: TextField(
-                          onChanged: (value){
-                            phone = value;
-                          },
+                          controller: phone,
                           keyboardType: TextInputType.phone,
                           decoration: InputDecoration(
                             border: InputBorder.none,
@@ -109,23 +106,23 @@ class _LoginViewState extends State<LoginView> {
                 height: 20,
               ),
               SizedBox(
-                width: double.infinity,
-                height: 45,
-                child: elevatedButton(
-                  text: "Send the code",
-                  onpress: () async {
-                    await FirebaseAuth.instance.verifyPhoneNumber(
-                      phoneNumber: '${countrycode.text + phone}',
-                      verificationCompleted: (PhoneAuthCredential credential) {},
-                      verificationFailed: (FirebaseAuthException e) {},
-                      codeSent: (String verificationId, int? resendToken) {
-                        LoginView.verify = verificationId;
-                        Get.to(()=>otpVerify());
-                      },
-                      codeAutoRetrievalTimeout: (String verificationId) {},
-                    );
-                  },
-                )
+                  width: double.infinity,
+                  height: 45,
+                  child: elevatedButton(
+                    text: "Send the code",
+                    onpress: () async {
+                      await FirebaseAuth.instance.verifyPhoneNumber(
+                        phoneNumber: '${countrycode.text+phone.text}',
+                        verificationCompleted: (PhoneAuthCredential credential) {},
+                        verificationFailed: (FirebaseAuthException e) {},
+                        codeSent: (String verificationId, int? resendToken) {
+                          LoginView.verify = verificationId;
+                          Get.to(()=>otpVerify());
+                        },
+                        codeAutoRetrievalTimeout: (String verificationId) {},
+                      );
+                    },
+                  )
               )
             ],
           ),
