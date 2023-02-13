@@ -4,6 +4,8 @@ import 'package:get/get.dart';
 import 'package:untvoice/models/DialScreen.dart';
 import 'package:untvoice/views/dial_screen.dart';
 
+import '../views/UPI_payment.dart';
+
 class AnonymousProfileScreen extends StatefulWidget {
   const AnonymousProfileScreen({Key? key}) : super(key: key);
 
@@ -176,7 +178,12 @@ class _AnonymousProfileScreenState extends State<AnonymousProfileScreen> {
                       ),
                       GestureDetector(
                         onTap: () {
-                          // TODO: Implement Chat
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (builder) => UPI_Payment(
+                                amount: 1,
+                                receiverUpiID: '7004164334@paytm',
+                                receiverName: dataOfcounsellor['first'],
+                              )));
                         },
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
